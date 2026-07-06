@@ -1,0 +1,104 @@
+#include "Pipe.h"
+#include "iostream"
+PipeFunctions::PipeFunctions(Texture2D UpperTexture, Texture2D LowerTexture)
+{
+    upperTexture = UpperTexture;
+    lowerTexture = LowerTexture;
+
+    timer = 0;
+}
+
+
+PipeSet PipeFunctions::Create()
+{
+    PipeSet newPipe(upperTexture, lowerTexture);
+
+
+    newPipe.randomOffset = GetRandomValue(1,150);
+
+
+    newPipe.UpperPos.x = 500;
+    newPipe.LowerPos.x = 500;
+
+
+    newPipe.UpperPos.y = -200 + newPipe.randomOffset;
+    newPipe.LowerPos.y = 200 + newPipe.randomOffset;
+
+
+    return newPipe;
+}
+
+
+
+void PipeFunctions::Update()
+{
+    for(auto& pipe: PipesCollection){
+    	pipe.UpperCollisionBox = {pipe.UpperPos.x,pipe.UpperPos.y,200.0f,400.0f};
+    	pipe.BottomCollisionBox = {pipe.LowerPos.x,pipe.LowerPos.y,200.0f,400.0f};
+    }
+    timer += GetFrameTime();
+
+
+    if(timer >= 5.0f)
+    {
+
+        PipesCollection.push_back(Create());
+
+        timer = 0;
+
+    }
+
+
+
+    if(!PipesCollection.empty())
+    {
+
+        if(PipesCollection[0].UpperPos.x <= -10)
+        {
+
+            PipesCollection.erase(PipesCollection.begin());
+
+
+        }
+
+    }
+   
+	   for(auto& pipe : PipesCollection)
+    {
+
+        	pipe.UpperPos.x -= 2;
+        	pipe.LowerPos.x -= 2;
+
+    }
+}
+
+
+		
+void PipeFunctions::Render()
+{
+    for(auto& pipe : PipesCollection)
+    {
+	DrawRectangleRec({{-10,-10,250,250},RED};
+        DrawTexturePro(
+            pipe.UpperPipe,
+            {0,0,(float)pipe.UpperPipe.width,(float)pipe.UpperPipe.height},
+            {pipe.UpperPos.x, pipe.UpperPos.y,400,400},
+            {0,0},
+            0,
+            RAYWHITE
+        );
+
+
+        DrawTexturePro(
+            pipe.LowerPipe,
+            {0,0,(float)pipe.LowerPipe.width,(float)-pipe.LowerPipe.height},
+            {pipe.LowerPos.x, pipe.LowerPos.y,400,400},
+            {0,0},
+            0,
+            RAYWHITE
+        );
+		std::cout<<pipe.UpperPos.x<<" "<<pipe.UpperPipe.width<<std::endl;
+    }
+}
+
+

@@ -1,0 +1,29 @@
+#pragma once
+#include "raylib.h"
+#include "vector"
+#include "utility"
+
+struct PipeSet{
+	Vector2 UpperPos;
+	Vector2 LowerPos;
+	Texture2D UpperPipe;
+	Texture2D LowerPipe;
+	std::vector<std::pair<int, int>> PipePositionsVector2 = {
+		    {-300, 220}, 
+       				{-260, 260}, 
+			              {-220, 300}, 
+			                     {-180, 340}, 
+			                              {-140, 380} 
+	};
+};
+struct PipeFunctions{
+	PipeSet pipe;
+	void Create();
+	std::pair<int,int> RandomPos();
+	void Update();
+	void Render();
+	void Unload();
+	PipeFunctions();
+	~PipeFunctions();
+
+};

@@ -1,0 +1,40 @@
+#include "raylib.h"
+#include "utility"
+#include "vector"
+#include "Pipe.h"
+
+PipeFunctions::PipeFunctions(){
+	Create();
+}
+PipeFunctions::~PipeFunctions(){
+	Unload();
+
+}
+
+void PipeFunctions::Create(){
+	pipe.pipeDistance = GetRandomValue(1,100);
+	pipe.UpperPipe = LoadTexture("../Textures/pipe.png");	
+	pipe.LowerPipe = LoadTexture("../Textures/pipe.png");
+
+	pipe.UpperPos.y = 200 + (int)pipe.pipeDistance;
+	pipe.LowerPos.y = -200 + (int)pipe.pipeDistance;
+	pipe.UpperPos.x = 500;
+	pipe.LowerPos.x = 500;
+
+}
+
+void PipeFunctions::Update(){
+	pipe.UpperPos.x -= 1;
+	pipe.LowerPos.x -= 1;
+}
+void PipeFunctions::Render(){
+	DrawTexturePro(pipe.UpperPipe,(Rectangle){0.0f,0.0f,(float)pipe.UpperPipe.width,(float)pipe.UpperPipe.height},(Rectangle){pipe.UpperPos.x,pipe.UpperPos.y,400.0f,400.0f},(Vector2){0.0f,0.0f},0.0f,RAYWHITE);
+	DrawTexturePro(pipe.LowerPipe,(Rectangle){0.0f,0.0f,(float)pipe.LowerPipe.width,(float)-pipe.LowerPipe.height},(Rectangle){pipe.LowerPos.x,pipe.LowerPos.y,400.0f,400.0f},(Vector2){0.0f,0.0f},0.0f,RAYWHITE);
+}
+void PipeFunctions::Unload(){
+	UnloadTexture(pipe.UpperPipe);
+	UnloadTexture(pipe.LowerPipe);
+}
+
+		
+

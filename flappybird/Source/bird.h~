@@ -1,0 +1,23 @@
+#pragma once
+
+#include "raylib.h"
+
+struct bird{
+	//bird properties
+	Vector2 pos;
+	Texture2D bird_texture;
+	float gravity;
+	float velocityY;
+	birdState state;
+	//functions
+	void Create();
+	void Jump();
+	void Input();
+	void Update();
+	void Render();
+	void Unload();
+	bird();
+	~bird();
+
+};
+

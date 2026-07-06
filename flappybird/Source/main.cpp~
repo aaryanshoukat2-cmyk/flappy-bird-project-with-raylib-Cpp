@@ -1,0 +1,35 @@
+#include "raylib.h"
+#include "bird.h"
+#include "Game.h"
+
+const short MAX_HEIGHT = 500;
+const short MAX_WIDTH  = 500;
+const short MAX_FPS    = 60;
+void Input(bird& player){
+	player.Input();
+}
+void Update(bird& player){
+	player.Update();
+}
+void Render(bird& player){
+	player.Render();
+}
+
+void RunGame(){
+	InitWindow(MAX_WIDTH,MAX_HEIGHT,"flappy bird");
+	SetTargetFPS(MAX_FPS);
+	bird player;
+	while(!WindowShouldClose()){
+		Input(player);
+		Update(player);
+		BeginDrawing();
+			ClearBackground(RAYWHITE);
+			Render(player);
+		EndDrawing();
+	}
+	CloseWindow();
+}
+int main(){
+	RunGame();
+	return 0;
+}

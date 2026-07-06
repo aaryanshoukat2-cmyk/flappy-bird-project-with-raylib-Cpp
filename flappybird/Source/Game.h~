@@ -1,0 +1,18 @@
+#pragma once
+#include "bird.h"
+
+enum class GameState{
+	started,
+	playing,
+	paused,
+}
+
+class Game{
+	private:
+		int score;
+	Game{}
+	~Game(){}
+
+
+
+};

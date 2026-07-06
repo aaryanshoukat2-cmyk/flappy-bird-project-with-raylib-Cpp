@@ -1,0 +1,18 @@
+#include "Game.h"
+#include "bird.h"
+
+void Game::SetScore(int value){
+	score = value;
+}	
+void Game::IncreaseScore(int& score){
+	++score;
+}
+int Game::GetScore(){
+	return score;
+}
+Game::Game(){
+	score = 0;
+	score = Clamp(score,0,100);
+	state = GameState::started;
+}
+Game::~Game(){}
