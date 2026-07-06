@@ -54,7 +54,7 @@ This project helped me learn:
 * High score saving
 * Improved visual effects
 
-![Screenshot](gameplay.png)
+![Screenshot](Screenshot_06-Jul_12-37-01_10508.png)
 
 ## License
 
