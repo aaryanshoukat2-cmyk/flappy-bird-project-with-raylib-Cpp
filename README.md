@@ -45,14 +45,6 @@ This project helped me learn:
 * Organizing a larger C++ project
 * Debugging and refactoring code
 
-## Future Improvements
-
-* Sound effects and music
-* Animated bird sprites
-* Better UI and menus
-* Difficulty progression
-* High score saving
-* Improved visual effects
 
 ![Screenshot](flappybird/Screenshot_06-Jul_12-37-01_10508.png)
 
